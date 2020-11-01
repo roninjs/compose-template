@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  ui:
+    image: ${DOCKER_USER}/${PROJECT_NAME}-ui:${IMAGE_TAG}
+    build: 
+      context: ./ui
+    ports:
+      - "3000:80"
+    networks: 
+      - frontend
+      - backend
+  
+  server:
+    image: ${DOCKER_USER}/${PROJECT_NAME}-server:${IMAGE_TAG}
+    build:
+      context: ./server
+    ports:
+      - "8080:80"
+    networks: 
+      - backend
+
+networks: 
+  frontend:
+  backend:
