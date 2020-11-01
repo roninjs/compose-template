@@ -1,20 +1,20 @@
 version: '3.8'
 
 services:
-  frontend:
-    image: ${DOCKER_USER}/${PROJECT_NAME}-frontend:${IMAGE_TAG}
+  server:
+    image: ${DOCKER_USER}/${PROJECT_NAME}-server:${IMAGE_TAG}
     build: 
-      context: ./frontend
+      context: ./server
     ports:
       - "3000:80"
     networks: 
       - frontend
       - backend
   
-  backend:
-    image: ${DOCKER_USER}/${PROJECT_NAME}-backend:${IMAGE_TAG}
+  ui:
+    image: ${DOCKER_USER}/${PROJECT_NAME}-ui:${IMAGE_TAG}
     build:
-      context: ./backend
+      context: ./ui
     networks: 
       - backend
 
